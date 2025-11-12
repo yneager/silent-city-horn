@@ -1,0 +1,18 @@
+{
+  "name": "silent-city-horn",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["acoustic", "civility", "noise-pollution", "innovation"],
+  "author": "Acoustic Civility Technologies",
+  "license": "ISC",
+  "description": "Silent City Horn - Acoustic Civility Technologies Website",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  }
+}

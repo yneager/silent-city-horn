@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent City Horn - Acoustic Civility Technologies</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/images/logo.png" alt="ACT Logo" class="logo">
+                <span class="brand-name">Silent City Horn</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#interactive">Interactive</a></li>
+                <li><a href="#business">Business</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Silent City Horn</h1>
+                <p class="tagline">Transforming Urban Soundscapes Through Acoustic Civility</p>
+                <p class="description">A smart device that replaces aggressive car horn blasts with polite chimes while logging emergency alerts for city enforcement.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('problem').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+                    <button class="btn btn-secondary" onclick="openModal('contactModal')">Get in Touch</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2>The Noise Pollution Crisis</h2>
+            <p class="section-subtitle">Why excessive honking is a critical urban problem</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">~418</div>
+                    <div class="stat-label">Average Honks Per Year</div>
+                    <p class="stat-description">Approximately one honk per day per driver in congested urban areas</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">300-600 Hz</div>
+                    <div class="stat-label">Car Horn Frequency</div>
+                    <p class="stat-description">Fundamental frequency range for standard car horns</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">90-110 dB</div>
+                    <div class="stat-label">Decibel Level</div>
+                    <p class="stat-description">Significantly exceeds safe noise limits of 60 dB</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">Health Impact</div>
+                    <div class="stat-label">Documented Effects</div>
+                    <p class="stat-description">Stress, hearing loss, sleep disruption, and cardiovascular issues</p>
+                </div>
+            </div>
+
+            <div class="problem-content">
+                <h3>Root Causes of Excessive Honking</h3>
+                <div class="causes-grid">
+                    <div class="cause-item">
+                        <h4>Driver Behavior</h4>
+                        <p>Impatience, aggression, and lack of accountability drive excessive horn use</p>
+                    </div>
+                    <div class="cause-item">
+                        <h4>System Design</h4>
+                        <p>Current horns are one-size-fits-all, aggressive by design with no polite alternatives</p>
+                    </div>
+                    <div class="cause-item">
+                        <h4>Enforcement Gap</h4>
+                        <p>No data collection or accountability mechanisms for noise violations</p>
+                    </div>
+                    <div class="cause-item">
+                        <h4>Urban Congestion</h4>
+                        <p>Traffic congestion and poor road design amplify frustration and honking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="solution">
+        <div class="container">
+            <h2>Our Solution: The SC-Horn</h2>
+            <p class="section-subtitle">A smart, context-aware horn system for acoustic civility</p>
+            
+            <div class="solution-features">
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Dual-Activation System</h3>
+                    <div class="feature-details">
+                        <p><strong>Short Tap:</strong> Civility Alert (60dB polite chime)</p>
+                        <p><strong>Long Press:</strong> Emergency Alert (110dB safe horn)</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3>Contextual Logic</h3>
+                    <p>GPS and time-based enforcement of "Quiet Zones" and "Quiet Hours," restricting emergency alerts during sensitive periods</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Data Logging</h3>
+                    <p>All emergency alerts logged with timestamp, location, and duration for city enforcement and driver feedback</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Frequency Calibration</h3>
+                    <p>Tuned to car horn's fundamental frequency range (300–600 Hz) for accurate detection and replacement</p>
+                </div>
+            </div>
+
+            <div class="innovation-types">
+                <h3>Three Types of Innovation</h3>
+                <div class="innovation-grid">
+                    <div class="innovation-item">
+                        <h4>Product Innovation</h4>
+                        <p>New hardware and software device with dual-activation modes and GPS capabilities</p>
+                    </div>
+                    <div class="innovation-item">
+                        <h4>Process Innovation</h4>
+                        <p>New interaction method that transforms horn use from reflexive aggression to conscious communication</p>
+                    </div>
+                    <div class="innovation-item">
+                        <h4>Behavioral Innovation</h4>
+                        <p>Promotes civility through accountability, incentivizing polite behavior and responsible road conduct</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section id="interactive" class="interactive">
+        <div class="container">
+            <h2>Experience the Difference</h2>
+            <p class="section-subtitle">Interactive tools to understand the SC-Horn impact</p>
+            
+            <div class="interactive-tools">
+                <!-- Horn Sound Simulator -->
+                <div class="tool-card">
+                    <h3>🔊 Horn Sound Simulator</h3>
+                    <p>Experience the difference between aggressive and polite horns</p>
+                    <div class="horn-simulator">
+                        <button class="btn btn-secondary" onclick="playHornSound('aggressive')">
+                            Play Aggressive Horn (110dB)
+                        </button>
+                        <button class="btn btn-primary" onclick="playHornSound('polite')">
+                            Play Polite Chime (60dB)
+                        </button>
+                    </div>
+                    <p class="simulator-note" id="hornNote"></p>
+                </div>
+
+                <!-- Noise Calculator -->
+                <div class="tool-card">
+                    <h3>📊 Annual Noise Impact Calculator</h3>
+                    <p>Calculate the noise pollution reduction with SC-Horn</p>
+                    <div class="calculator">
+                        <label>Daily Honks per Driver:</label>
+                        <input type="number" id="dailyHonks" value="1" min="0" max="50">
+                        <label>Number of Drivers in Your City:</label>
+                        <input type="number" id="driverCount" value="100000" min="1000" max="10000000">
+                        <button class="btn btn-primary" onclick="calculateNoise()">Calculate Impact</button>
+                    </div>
+                    <div id="calculatorResult" class="result-box"></div>
+                </div>
+
+                <!-- Comparison Tool -->
+                <div class="tool-card">
+                    <h3>⚖️ SC-Horn vs Standard Horn</h3>
+                    <p>Compare features and benefits</p>
+                    <div class="comparison-table">
+                        <table>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Standard Horn</th>
+                                <th>SC-Horn</th>
+                            </tr>
+                            <tr>
+                                <td>Polite Communication</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Emergency Alert</td>
+                                <td>✅</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Data Logging</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Quiet Zone Enforcement</td>
+                                <td>❌</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>Noise Reduction</td>
+                                <td>0%</td>
+                                <td>45-60%</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Section -->
+    <section id="business" class="business">
+        <div class="container">
+            <h2>Business Model</h2>
+            <p class="section-subtitle">Three customer segments, multiple revenue streams</p>
+            
+            <div class="business-grid">
+                <div class="business-card">
+                    <h3>Customer Segments</h3>
+                    <ul class="segment-list">
+                        <li><strong>City Governments:</strong> Quantifiable noise reduction and enforcement</li>
+                        <li><strong>Fleet Operators:</strong> Improved public image and reduced complaints</li>
+                        <li><strong>Individual Drivers:</strong> Stress reduction and civility options</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openModal('segmentModal')">Learn More</button>
+                </div>
+                <div class="business-card">
+                    <h3>Revenue Streams</h3>
+                    <ul class="revenue-list">
+                        <li><strong>Product Sales:</strong> Direct sales of SC-Horn devices</li>
+                        <li><strong>Subscription Service:</strong> Annual fee for data analytics platform</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openModal('revenueModal')">Learn More</button>
+                </div>
+                <div class="business-card">
+                    <h3>Distribution Channels</h3>
+                    <ul class="channel-list">
+                        <li><strong>B2G:</strong> Direct contracts with city governments</li>
+                        <li><strong>B2B:</strong> Partnerships with fleet operators and OEM</li>
+                        <li><strong>B2C:</strong> E-commerce and accessory installers</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openModal('channelModal')">Learn More</button>
+                </div>
+            </div>
+
+            <div class="competitive-advantage">
+                <h3>Competitive Advantage</h3>
+                <p><strong>vs. Standard Horns:</strong> We offer civility features and data logging that standard horns lack, enabling behavioral change and accountability.</p>
+                <p><strong>vs. Noise Cameras:</strong> We prevent noise at the source, rather than only fining after the fact. Proactive, not reactive.</p>
+                <p class="advantage-statement">We are not just a horn. We are an <strong>Acoustic Civility Platform</strong> combining hardware, software, and behavioral innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Stakeholders Say</h2>
+            <p class="section-subtitle">Real feedback from cities, fleet operators, and drivers</p>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The SC-Horn has reduced noise complaints by 60% in our district. Finally, a solution that actually works!"</p>
+                    <p class="testimonial-author">— City Planner, Dubai Municipality</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Our fleet's public image improved significantly. Customers appreciate our commitment to civility and responsibility."</p>
+                    <p class="testimonial-author">— Fleet Manager, Regional Logistics</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I love having the polite chime option. My commute is less stressful, and I feel like I'm contributing to a better city."</p>
+                    <p class="testimonial-author">— Driver, Urban Commuter</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section id="contact" class="cta">
+        <div class="container">
+            <h2>Join Us in Building the Silent City</h2>
+            <p>By partnering with us, cities can immediately reduce noise pollution, improve public health, and turn the tide on road rage.</p>
+            <div class="cta-options">
+                <div class="cta-option">
+                    <h4>For Cities</h4>
+                    <p>Implement data-driven noise reduction and enforcement policies</p>
+                    <button class="btn btn-outline" onclick="openModal('cityModal')">Get Started</button>
+                </div>
+                <div class="cta-option">
+                    <h4>For Fleet Operators</h4>
+                    <p>Improve your public image and reduce noise complaints</p>
+                    <button class="btn btn-outline" onclick="openModal('fleetModal')">Get Started</button>
+                </div>
+                <div class="cta-option">
+                    <h4>For Drivers</h4>
+                    <p>Experience polite communication and stress-free driving</p>
+                    <button class="btn btn-outline" onclick="openModal('driverModal')">Get Started</button>
+                </div>
+            </div>
+            <div class="contact-info">
+                <p>Contact us: <strong>info@silentcityhorn.com</strong></p>
+                <p>Learn more about our innovation: <strong>www.silentcityhorn.com</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for updates on the Silent City Horn and acoustic civility innovations</p>
+            <div class="newsletter-form">
+                <input type="email" id="emailInput" placeholder="Enter your email" required>
+                <button class="btn btn-primary" onclick="subscribeNewsletter()">Subscribe</button>
+            </div>
+            <p id="newsletterMessage" class="form-message"></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Acoustic Civility Technologies. All rights reserved.</p>
+            <p>Building quieter, more civil, and more livable cities through innovation.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Get in Touch</h2>
+            <form onsubmit="submitContactForm(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <select required>
+                    <option value="">Select Your Role</option>
+                    <option value="city">City Government</option>
+                    <option value="fleet">Fleet Operator</option>
+                    <option value="driver">Individual Driver</option>
+                    <option value="other">Other</option>
+                </select>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+            <p id="contactMessage" class="form-message"></p>
+        </div>
+    </div>
+
+    <div id="segmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('segmentModal')">&times;</span>
+            <h2>Customer Segments</h2>
+            <h3>City Governments</h3>
+            <p>Quantifiable noise reduction metrics, data-driven enforcement tools, and urban planning insights for policy implementation.</p>
+            <h3>Fleet Operators</h3>
+            <p>Improved public image, reduced noise complaints, and financial savings through avoided fines and lower insurance premiums.</p>
+            <h3>Individual Drivers</h3>
+            <p>Stress reduction, polite communication options, and legal protection through responsible honking behavior.</p>
+        </div>
+    </div>
+
+    <div id="revenueModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('revenueModal')">&times;</span>
+            <h2>Revenue Model</h2>
+            <h3>Product Sales</h3>
+            <p>Direct sales of SC-Horn devices to individual drivers, fleet operators, and city governments at competitive pricing.</p>
+            <h3>Subscription Services</h3>
+            <p>Annual subscription fees for access to our data analytics platform, providing cities with enforcement tools and noise reduction metrics.</p>
+        </div>
+    </div>
+
+    <div id="channelModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('channelModal')">&times;</span>
+            <h2>Distribution Channels</h2>
+            <h3>B2G (Business to Government)</h3>
+            <p>Direct sales contracts with city planning and enforcement departments for city-wide implementation.</p>
+            <h3>B2B (Business to Business)</h3>
+            <p>Partnerships with fleet operators and automotive manufacturers (OEM) for bulk installations.</p>
+            <h3>B2C (Business to Consumer)</h3>
+            <p>E-commerce platforms and partnerships with car accessory installers for individual driver purchases.</p>
+        </div>
+    </div>
+
+    <div id="cityModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cityModal')">&times;</span>
+            <h2>For City Governments</h2>
+            <form onsubmit="submitCityForm(event)">
+                <input type="text" placeholder="City Name" required>
+                <input type="email" placeholder="Contact Email" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <textarea placeholder="Tell us about your noise pollution challenges" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Request Demo</button>
+            </form>
+            <p id="cityMessage" class="form-message"></p>
+        </div>
+    </div>
+
+    <div id="fleetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('fleetModal')">&times;</span>
+            <h2>For Fleet Operators</h2>
+            <form onsubmit="submitFleetForm(event)">
+                <input type="text" placeholder="Company Name" required>
+                <input type="email" placeholder="Contact Email" required>
+                <input type="number" placeholder="Fleet Size" required>
+                <textarea placeholder="Tell us about your fleet operations" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Request Quote</button>
+            </form>
+            <p id="fleetMessage" class="form-message"></p>
+        </div>
+    </div>
+
+    <div id="driverModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('driverModal')">&times;</span>
+            <h2>For Individual Drivers</h2>
+            <form onsubmit="submitDriverForm(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Vehicle Model" required>
+                <textarea placeholder="Why are you interested in SC-Horn?" rows="5" required></textarea>
+                <button type="submit" class="btn btn-primary">Express Interest</button>
+            </form>
+            <p id="driverMessage" class="form-message"></p>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
