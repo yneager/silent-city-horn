@@ -3,449 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silent City Horn - Acoustic Civility Technologies</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>BEARZ - Honking Tracking & Accountability System</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Open Sans', sans-serif; background: #FFFFFF; color: #333; width: 100%; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+        .navbar { background: #1a3a52; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex-wrap: wrap; }
+        .navbar-brand { font-size: 24px; font-weight: 800; color: #D4AF37; text-decoration: none; }
+        .nav-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
+        .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: color 0.3s; white-space: nowrap; }
+        .nav-links a:hover { color: #D4AF37; }
+        .hero { background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 60px 40px; text-align: center; min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; color: #D4AF37; line-height: 1.2; }
+        .hero p { font-size: 16px; margin-bottom: 30px; max-width: 800px; line-height: 1.6; }
+        .cta-button { background: #D4AF37; color: #1a3a52; padding: 12px 30px; border: none; border-radius: 5px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.3s; text-decoration: none; display: inline-block; margin: 8px; white-space: nowrap; }
+        .cta-button:hover { background: #E8C547; }
+        .section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
+        .section-title { font-size: 36px; color: #1a3a52; margin-bottom: 40px; text-align: center; border-bottom: 4px solid #D4AF37; padding-bottom: 20px; }
+        .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+        .problem-content h3 { font-size: 22px; color: #1a3a52; margin-bottom: 15px; }
+        .problem-content p { font-size: 15px; line-height: 1.8; margin-bottom: 15px; color: #555; }
+        .stats-box { background: #f0f4f8; padding: 18px; border-left: 4px solid #D4AF37; margin: 12px 0; }
+        .stats-box strong { color: #D4AF37; font-size: 16px; }
+        .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+        .solution-features { display: flex; flex-direction: column; gap: 18px; }
+        .feature-item { background: #fff5e6; padding: 18px; border-left: 4px solid #D4AF37; }
+        .feature-item h4 { color: #1a3a52; margin-bottom: 8px; font-size: 15px; }
+        .feature-item p { color: #555; font-size: 13px; line-height: 1.6; }
+        .business-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin-bottom: 40px; }
+        .business-card { background: #f0f4f8; padding: 25px; border-left: 4px solid #D4AF37; text-align: center; }
+        .business-card h3 { color: #1a3a52; margin-bottom: 12px; font-size: 16px; }
+        .business-card p { color: #555; font-size: 13px; line-height: 1.6; }
+        .revenue-model { background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 30px; border-left: 4px solid #D4AF37; margin-top: 30px; }
+        .revenue-model h4 { color: #D4AF37; margin-bottom: 12px; font-size: 16px; }
+        .revenue-model p { font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+        .contact-section { background: #fff5e6; padding: 40px; text-align: center; border-left: 4px solid #D4AF37; }
+        .contact-section h2 { color: #1a3a52; margin-bottom: 20px; }
+        .contact-form { max-width: 600px; margin: 30px auto; display: flex; flex-direction: column; gap: 12px; }
+        .contact-form input, .contact-form textarea { padding: 10px; border: 2px solid #D4AF37; border-radius: 5px; font-family: 'Open Sans', sans-serif; font-size: 13px; width: 100%; }
+        .contact-form textarea { resize: vertical; min-height: 100px; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #1a3a52; box-shadow: 0 0 5px rgba(26, 58, 82, 0.3); }
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow-y: auto; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 600px; border-left: 4px solid #D4AF37; }
+        .close { color: #aaa; float: right; font-size: 24px; font-weight: bold; cursor: pointer; }
+        .close:hover { color: #D4AF37; }
+        .footer { background: #1a3a52; color: white; padding: 30px 40px; text-align: center; width: 100%; }
+        .footer p { margin: 8px 0; font-size: 13px; }
+        .logo-img { height: 40px; margin-right: 20px; }
+        @media (max-width: 1024px) {
+            .section { padding: 50px 30px; }
+            .navbar { padding: 15px 30px; }
+            .hero { padding: 50px 30px; }
+            .hero h1 { font-size: 40px; }
+            .section-title { font-size: 32px; }
+            .problem-grid, .solution-grid { gap: 25px; }
+            .business-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .section { padding: 40px 20px; }
+            .navbar { padding: 12px 20px; }
+            .navbar-brand { font-size: 20px; }
+            .nav-links { gap: 12px; }
+            .nav-links a { font-size: 12px; }
+            .hero { padding: 40px 20px; min-height: 400px; }
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 14px; }
+            .cta-button { padding: 10px 20px; font-size: 12px; margin: 6px; }
+            .section-title { font-size: 28px; }
+            .problem-grid, .solution-grid { grid-template-columns: 1fr; gap: 20px; }
+            .business-grid { grid-template-columns: 1fr; gap: 20px; }
+            .problem-content h3 { font-size: 20px; }
+            .problem-content p { font-size: 14px; }
+            .feature-item h4 { font-size: 14px; }
+            .feature-item p { font-size: 12px; }
+            .business-card h3 { font-size: 15px; }
+            .business-card p { font-size: 12px; }
+            .revenue-model { padding: 20px; }
+            .revenue-model p { font-size: 13px; }
+            .modal-content { width: 95%; margin: 20% auto; }
+            .footer { padding: 20px; }
+        }
+        @media (max-width: 480px) {
+            .section { padding: 30px 15px; }
+            .navbar { padding: 10px 15px; }
+            .navbar-brand { font-size: 18px; }
+            .nav-links { gap: 8px; }
+            .nav-links a { font-size: 11px; }
+            .hero { padding: 30px 15px; min-height: 350px; }
+            .hero h1 { font-size: 26px; }
+            .hero p { font-size: 13px; }
+            .cta-button { padding: 8px 16px; font-size: 11px; margin: 4px; }
+            .section-title { font-size: 24px; }
+            .stats-box { padding: 15px; }
+            .stats-box strong { font-size: 14px; }
+            .feature-item { padding: 15px; }
+            .business-card { padding: 20px; }
+            .revenue-model { padding: 15px; }
+            .contact-form { max-width: 100%; }
+            .footer { padding: 15px; }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <img src="/images/logo.png" alt="ACT Logo" class="logo">
-                <span class="brand-name">Silent City Horn</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#problem">Problem</a></li>
-                <li><a href="#solution">Solution</a></li>
-                <li><a href="#interactive">Interactive</a></li>
-                <li><a href="#business">Business</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <div style="display: flex; align-items: center;">
+            <span class="navbar-brand">BEARZ</span>
         </div>
+        <ul class="nav-links">
+            <li><a onclick="scrollToSection('problem')">Problem</a></li>
+            <li><a onclick="scrollToSection('solution')">Solution</a></li>
+            <li><a onclick="scrollToSection('business')">Business</a></li>
+            <li><a onclick="scrollToSection('contact')">Contact</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>The Silent City Horn</h1>
-                <p class="tagline">Transforming Urban Soundscapes Through Acoustic Civility</p>
-                <p class="description">A smart device that replaces aggressive car horn blasts with polite chimes while logging emergency alerts for city enforcement.</p>
-                <div class="cta-buttons">
-                    <button class="btn btn-primary" onclick="document.getElementById('problem').scrollIntoView({behavior: 'smooth'})">Learn More</button>
-                    <button class="btn btn-secondary" onclick="openModal('contactModal')">Get in Touch</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="hero">
+        <h1>BEARZ: Silencing Unnecessary Honking</h1>
+        <p>A data-driven solution to urban noise pollution through honking tracking, accountability, and behavioral transformation.</p>
+        <button class="cta-button" onclick="openModal('contact-modal')">Get in Touch</button>
+        <button class="cta-button" onclick="scrollToSection('solution')" style="background: white; color: #1a3a52;">Learn More</button>
+    </div>
 
     <!-- Problem Section -->
-    <section id="problem" class="problem">
-        <div class="container">
-            <h2>The Noise Pollution Crisis</h2>
-            <p class="section-subtitle">Why excessive honking is a critical urban problem</p>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">~418</div>
-                    <div class="stat-label">Average Honks Per Year</div>
-                    <p class="stat-description">Approximately one honk per day per driver in congested urban areas</p>
+    <section class="section" id="problem">
+        <h2 class="section-title">The Noise Pollution Crisis</h2>
+        <div class="problem-grid">
+            <div class="problem-content">
+                <h3>Why Honking is a Problem</h3>
+                <p>Urban honking has become a major source of noise pollution, affecting millions of people's health and quality of life.</p>
+                
+                <div class="stats-box">
+                    <strong>65%</strong> of drivers honk inappropriately in non-emergency situations
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">300-600 Hz</div>
-                    <div class="stat-label">Car Horn Frequency</div>
-                    <p class="stat-description">Fundamental frequency range for standard car horns</p>
+                
+                <div class="stats-box">
+                    <strong>90-110 dB</strong> - Car horns exceed safe noise limits (safe limit: 70 dB)
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">90-110 dB</div>
-                    <div class="stat-label">Decibel Level</div>
-                    <p class="stat-description">Significantly exceeds safe noise limits of 60 dB</p>
+                
+                <div class="stats-box">
+                    <strong>418 times/year</strong> - Average honking frequency per driver
                 </div>
-                <div class="stat-card">
-                    <div class="stat-value">Health Impact</div>
-                    <div class="stat-label">Documented Effects</div>
-                    <p class="stat-description">Stress, hearing loss, sleep disruption, and cardiovascular issues</p>
+                
+                <div class="stats-box">
+                    <strong>4.56 million</strong> vehicles registered in the UAE
                 </div>
             </div>
-
-            <div class="problem-content">
-                <h3>Root Causes of Excessive Honking</h3>
-                <div class="causes-grid">
-                    <div class="cause-item">
-                        <h4>Driver Behavior</h4>
-                        <p>Impatience, aggression, and lack of accountability drive excessive horn use</p>
-                    </div>
-                    <div class="cause-item">
-                        <h4>System Design</h4>
-                        <p>Current horns are one-size-fits-all, aggressive by design with no polite alternatives</p>
-                    </div>
-                    <div class="cause-item">
-                        <h4>Enforcement Gap</h4>
-                        <p>No data collection or accountability mechanisms for noise violations</p>
-                    </div>
-                    <div class="cause-item">
-                        <h4>Urban Congestion</h4>
-                        <p>Traffic congestion and poor road design amplify frustration and honking</p>
-                    </div>
-                </div>
+            <div>
+                <h3 style="color: #D4AF37; margin-bottom: 20px;">Health & Environmental Impact</h3>
+                <p style="margin-bottom: 15px;"><strong>Sleep Disruption:</strong> Noise pollution reduces sleep quality and increases fatigue-related accidents.</p>
+                <p style="margin-bottom: 15px;"><strong>Stress & Anxiety:</strong> Chronic exposure to honking increases cortisol levels and stress-related illnesses.</p>
+                <p style="margin-bottom: 15px;"><strong>Cardiovascular Issues:</strong> Prolonged noise exposure contributes to hypertension and heart disease.</p>
+                <p style="margin-bottom: 15px;"><strong>Behavioral Problems:</strong> Children exposed to noise pollution show reduced concentration and learning ability.</p>
+                <p><strong>Environmental Degradation:</strong> Noise pollution disrupts wildlife and ecosystems in urban areas.</p>
             </div>
         </div>
     </section>
 
     <!-- Solution Section -->
-    <section id="solution" class="solution">
-        <div class="container">
-            <h2>Our Solution: The SC-Horn</h2>
-            <p class="section-subtitle">A smart, context-aware horn system for acoustic civility</p>
-            
-            <div class="solution-features">
-                <div class="feature-card">
-                    <div class="feature-icon">🔊</div>
-                    <h3>Dual-Activation System</h3>
-                    <div class="feature-details">
-                        <p><strong>Short Tap:</strong> Civility Alert (60dB polite chime)</p>
-                        <p><strong>Long Press:</strong> Emergency Alert (110dB safe horn)</p>
-                    </div>
+    <section class="section" id="solution" style="background: #f9f9f9;">
+        <h2 class="section-title">The BEARZ Solution</h2>
+        <div class="solution-grid">
+            <div>
+                <h3 style="color: #1a3a52; margin-bottom: 20px;">How BEARZ Works</h3>
+                <p style="margin-bottom: 20px; color: #555; line-height: 1.8;">BEARZ is a compact honking tracking device installed in vehicles during annual RTA registration. It uses advanced frequency sensors to detect and log honking incidents, creating accountability through a tariff system.</p>
+                
+                <div class="feature-item">
+                    <h4>🔊 Frequency Detection</h4>
+                    <p>Accurately captures car horn frequencies (300-600 Hz) to track only the vehicle's own honks, not ambient noise.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📍</div>
-                    <h3>Contextual Logic</h3>
-                    <p>GPS and time-based enforcement of "Quiet Zones" and "Quiet Hours," restricting emergency alerts during sensitive periods</p>
+                
+                <div class="feature-item">
+                    <h4>📊 Data Logging</h4>
+                    <p>Records honking incidents with timestamps and duration for accurate accountability and tariff calculation.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Data Logging</h3>
-                    <p>All emergency alerts logged with timestamp, location, and duration for city enforcement and driver feedback</p>
+                
+                <div class="feature-item">
+                    <h4>💰 Tariff System</h4>
+                    <p>Drivers pay annual tariffs based on honking frequency, creating a financial incentive to reduce unnecessary honking.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Frequency Calibration</h3>
-                    <p>Tuned to car horn's fundamental frequency range (300–600 Hz) for accurate detection and replacement</p>
+                
+                <div class="feature-item">
+                    <h4>🌍 RTA Integration</h4>
+                    <p>Seamlessly integrates with existing vehicle registration systems across all 7 UAE emirates.</p>
                 </div>
             </div>
-
-            <div class="innovation-types">
-                <h3>Three Types of Innovation</h3>
-                <div class="innovation-grid">
-                    <div class="innovation-item">
-                        <h4>Product Innovation</h4>
-                        <p>New hardware and software device with dual-activation modes and GPS capabilities</p>
-                    </div>
-                    <div class="innovation-item">
-                        <h4>Process Innovation</h4>
-                        <p>New interaction method that transforms horn use from reflexive aggression to conscious communication</p>
-                    </div>
-                    <div class="innovation-item">
-                        <h4>Behavioral Innovation</h4>
-                        <p>Promotes civility through accountability, incentivizing polite behavior and responsible road conduct</p>
-                    </div>
+            <div>
+                <h3 style="color: #1a3a52; margin-bottom: 20px;">Product Specifications</h3>
+                <div class="feature-item">
+                    <h4>Device Cost</h4>
+                    <p><strong style="color: #D4AF37;">5 AED</strong> per unit - affordable for mass deployment</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Section -->
-    <section id="interactive" class="interactive">
-        <div class="container">
-            <h2>Experience the Difference</h2>
-            <p class="section-subtitle">Interactive tools to understand the SC-Horn impact</p>
-            
-            <div class="interactive-tools">
-                <!-- Horn Sound Simulator -->
-                <div class="tool-card">
-                    <h3>🔊 Horn Sound Simulator</h3>
-                    <p>Experience the difference between aggressive and polite horns</p>
-                    <div class="horn-simulator">
-                        <button class="btn btn-secondary" onclick="playHornSound('aggressive')">
-                            Play Aggressive Horn (110dB)
-                        </button>
-                        <button class="btn btn-primary" onclick="playHornSound('polite')">
-                            Play Polite Chime (60dB)
-                        </button>
-                    </div>
-                    <p class="simulator-note" id="hornNote"></p>
+                
+                <div class="feature-item">
+                    <h4>Installation</h4>
+                    <p>Simple plug-and-play installation during routine vehicle registration. No complex wiring required.</p>
                 </div>
-
-                <!-- Noise Calculator -->
-                <div class="tool-card">
-                    <h3>📊 Annual Noise Impact Calculator</h3>
-                    <p>Calculate the noise pollution reduction with SC-Horn</p>
-                    <div class="calculator">
-                        <label>Daily Honks per Driver:</label>
-                        <input type="number" id="dailyHonks" value="1" min="0" max="50">
-                        <label>Number of Drivers in Your City:</label>
-                        <input type="number" id="driverCount" value="100000" min="1000" max="10000000">
-                        <button class="btn btn-primary" onclick="calculateNoise()">Calculate Impact</button>
-                    </div>
-                    <div id="calculatorResult" class="result-box"></div>
+                
+                <div class="feature-item">
+                    <h4>Technology</h4>
+                    <p>Advanced frequency sensor technology with secure encrypted data transmission to RTA systems.</p>
                 </div>
-
-                <!-- Comparison Tool -->
-                <div class="tool-card">
-                    <h3>⚖️ SC-Horn vs Standard Horn</h3>
-                    <p>Compare features and benefits</p>
-                    <div class="comparison-table">
-                        <table>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Standard Horn</th>
-                                <th>SC-Horn</th>
-                            </tr>
-                            <tr>
-                                <td>Polite Communication</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>Emergency Alert</td>
-                                <td>✅</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>Data Logging</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>Quiet Zone Enforcement</td>
-                                <td>❌</td>
-                                <td>✅</td>
-                            </tr>
-                            <tr>
-                                <td>Noise Reduction</td>
-                                <td>0%</td>
-                                <td>45-60%</td>
-                            </tr>
-                        </table>
-                    </div>
+                
+                <div class="feature-item">
+                    <h4>Expected Impact</h4>
+                    <p><strong>45-60% reduction</strong> in unnecessary honking within 3 years of deployment</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Market Potential</h4>
+                    <p><strong>25 million AED</strong> one-time revenue from 4.56M vehicles + recurring tariff revenue</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Business Section -->
-    <section id="business" class="business">
-        <div class="container">
-            <h2>Business Model</h2>
-            <p class="section-subtitle">Three customer segments, multiple revenue streams</p>
-            
-            <div class="business-grid">
-                <div class="business-card">
-                    <h3>Customer Segments</h3>
-                    <ul class="segment-list">
-                        <li><strong>City Governments:</strong> Quantifiable noise reduction and enforcement</li>
-                        <li><strong>Fleet Operators:</strong> Improved public image and reduced complaints</li>
-                        <li><strong>Individual Drivers:</strong> Stress reduction and civility options</li>
-                    </ul>
-                    <button class="btn btn-outline" onclick="openModal('segmentModal')">Learn More</button>
-                </div>
-                <div class="business-card">
-                    <h3>Revenue Streams</h3>
-                    <ul class="revenue-list">
-                        <li><strong>Product Sales:</strong> Direct sales of SC-Horn devices</li>
-                        <li><strong>Subscription Service:</strong> Annual fee for data analytics platform</li>
-                    </ul>
-                    <button class="btn btn-outline" onclick="openModal('revenueModal')">Learn More</button>
-                </div>
-                <div class="business-card">
-                    <h3>Distribution Channels</h3>
-                    <ul class="channel-list">
-                        <li><strong>B2G:</strong> Direct contracts with city governments</li>
-                        <li><strong>B2B:</strong> Partnerships with fleet operators and OEM</li>
-                        <li><strong>B2C:</strong> E-commerce and accessory installers</li>
-                    </ul>
-                    <button class="btn btn-outline" onclick="openModal('channelModal')">Learn More</button>
-                </div>
+    <section class="section" id="business">
+        <h2 class="section-title">Business Model</h2>
+        
+        <h3 style="color: #1a3a52; margin: 30px 0 20px 0; font-size: 24px;">Customer Segments</h3>
+        <div class="business-grid">
+            <div class="business-card">
+                <h3>🏛️ RTA Agencies</h3>
+                <p>Government partners seeking to reduce noise pollution and improve traffic enforcement through data-driven accountability.</p>
             </div>
+            <div class="business-card">
+                <h3>🚗 Vehicle Owners</h3>
+                <p>Individual drivers who benefit from quieter cities and can reduce tariffs by honking responsibly.</p>
+            </div>
+            <div class="business-card">
+                <h3>🚚 Fleet Operators</h3>
+                <p>Companies managing large vehicle fleets seeking to improve driver behavior and reduce operational costs.</p>
+            </div>
+        </div>
 
-            <div class="competitive-advantage">
-                <h3>Competitive Advantage</h3>
-                <p><strong>vs. Standard Horns:</strong> We offer civility features and data logging that standard horns lack, enabling behavioral change and accountability.</p>
-                <p><strong>vs. Noise Cameras:</strong> We prevent noise at the source, rather than only fining after the fact. Proactive, not reactive.</p>
-                <p class="advantage-statement">We are not just a horn. We are an <strong>Acoustic Civility Platform</strong> combining hardware, software, and behavioral innovation.</p>
-            </div>
+        <div class="revenue-model">
+            <h4>💰 Revenue Model</h4>
+            <p><strong>One-Time Device Revenue:</strong> 4.56M vehicles × 5 AED = 25M AED</p>
+            <p><strong>Annual Tariff Revenue (Year 5):</strong> 40M AED from honking-based tariffs</p>
+            <p><strong>Total Year 5 Revenue:</strong> 65M AED with 5-10% profit margin</p>
+            <p><strong>Market Penetration Target:</strong> 88% vehicle coverage by Year 5</p>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2>What Stakeholders Say</h2>
-            <p class="section-subtitle">Real feedback from cities, fleet operators, and drivers</p>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The SC-Horn has reduced noise complaints by 60% in our district. Finally, a solution that actually works!"</p>
-                    <p class="testimonial-author">— City Planner, Dubai Municipality</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Our fleet's public image improved significantly. Customers appreciate our commitment to civility and responsibility."</p>
-                    <p class="testimonial-author">— Fleet Manager, Regional Logistics</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"I love having the polite chime option. My commute is less stressful, and I feel like I'm contributing to a better city."</p>
-                    <p class="testimonial-author">— Driver, Urban Commuter</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action Section -->
-    <section id="contact" class="cta">
-        <div class="container">
-            <h2>Join Us in Building the Silent City</h2>
-            <p>By partnering with us, cities can immediately reduce noise pollution, improve public health, and turn the tide on road rage.</p>
-            <div class="cta-options">
-                <div class="cta-option">
-                    <h4>For Cities</h4>
-                    <p>Implement data-driven noise reduction and enforcement policies</p>
-                    <button class="btn btn-outline" onclick="openModal('cityModal')">Get Started</button>
-                </div>
-                <div class="cta-option">
-                    <h4>For Fleet Operators</h4>
-                    <p>Improve your public image and reduce noise complaints</p>
-                    <button class="btn btn-outline" onclick="openModal('fleetModal')">Get Started</button>
-                </div>
-                <div class="cta-option">
-                    <h4>For Drivers</h4>
-                    <p>Experience polite communication and stress-free driving</p>
-                    <button class="btn btn-outline" onclick="openModal('driverModal')">Get Started</button>
-                </div>
-            </div>
-            <div class="contact-info">
-                <p>Contact us: <strong>info@silentcityhorn.com</strong></p>
-                <p>Learn more about our innovation: <strong>www.silentcityhorn.com</strong></p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter for updates on the Silent City Horn and acoustic civility innovations</p>
-            <div class="newsletter-form">
-                <input type="email" id="emailInput" placeholder="Enter your email" required>
-                <button class="btn btn-primary" onclick="subscribeNewsletter()">Subscribe</button>
-            </div>
-            <p id="newsletterMessage" class="form-message"></p>
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Get Started with BEARZ</h2>
+        <p style="text-align: center; font-size: 16px; color: #555; margin-bottom: 30px;">
+            Join us in transforming traffic culture. Whether you're an RTA partner, fleet operator, or individual driver, BEARZ has a solution for you.
+        </p>
+        
+        <div class="business-grid" style="margin-bottom: 40px;">
+            <button class="cta-button" onclick="openModal('rta-modal')" style="width: 100%; text-align: center;">RTA Partnership</button>
+            <button class="cta-button" onclick="openModal('fleet-modal')" style="width: 100%; text-align: center;">Fleet Operator</button>
+            <button class="cta-button" onclick="openModal('driver-modal')" style="width: 100%; text-align: center;">Individual Driver</button>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Acoustic Civility Technologies. All rights reserved.</p>
-            <p>Building quieter, more civil, and more livable cities through innovation.</p>
-        </div>
+        <p><strong>BEARZ - Behavioral Accountability for Emission Reduction & Zero-noise</strong></p>
+        <p>Transforming traffic culture through accountability and acoustic civility.</p>
+        <p style="margin-top: 20px; color: #D4AF37;">© 2025 BEARZ. All rights reserved.</p>
     </footer>
 
     <!-- Modals -->
-    <div id="contactModal" class="modal">
+    <div id="contact-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('contactModal')">&times;</span>
-            <h2>Get in Touch</h2>
-            <form onsubmit="submitContactForm(event)">
+            <span class="close" onclick="closeModal('contact-modal')">&times;</span>
+            <h2 style="color: #1a3a52; margin-bottom: 20px;">Get in Touch</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
-                <select required>
-                    <option value="">Select Your Role</option>
-                    <option value="city">City Government</option>
-                    <option value="fleet">Fleet Operator</option>
-                    <option value="driver">Individual Driver</option>
-                    <option value="other">Other</option>
-                </select>
-                <textarea placeholder="Your Message" rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <input type="text" placeholder="Organization">
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="cta-button" style="width: 100%; text-align: center;">Send Message</button>
             </form>
-            <p id="contactMessage" class="form-message"></p>
         </div>
     </div>
 
-    <div id="segmentModal" class="modal">
+    <div id="rta-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('segmentModal')">&times;</span>
-            <h2>Customer Segments</h2>
-            <h3>City Governments</h3>
-            <p>Quantifiable noise reduction metrics, data-driven enforcement tools, and urban planning insights for policy implementation.</p>
-            <h3>Fleet Operators</h3>
-            <p>Improved public image, reduced noise complaints, and financial savings through avoided fines and lower insurance premiums.</p>
-            <h3>Individual Drivers</h3>
-            <p>Stress reduction, polite communication options, and legal protection through responsible honking behavior.</p>
-        </div>
-    </div>
-
-    <div id="revenueModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('revenueModal')">&times;</span>
-            <h2>Revenue Model</h2>
-            <h3>Product Sales</h3>
-            <p>Direct sales of SC-Horn devices to individual drivers, fleet operators, and city governments at competitive pricing.</p>
-            <h3>Subscription Services</h3>
-            <p>Annual subscription fees for access to our data analytics platform, providing cities with enforcement tools and noise reduction metrics.</p>
-        </div>
-    </div>
-
-    <div id="channelModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('channelModal')">&times;</span>
-            <h2>Distribution Channels</h2>
-            <h3>B2G (Business to Government)</h3>
-            <p>Direct sales contracts with city planning and enforcement departments for city-wide implementation.</p>
-            <h3>B2B (Business to Business)</h3>
-            <p>Partnerships with fleet operators and automotive manufacturers (OEM) for bulk installations.</p>
-            <h3>B2C (Business to Consumer)</h3>
-            <p>E-commerce platforms and partnerships with car accessory installers for individual driver purchases.</p>
-        </div>
-    </div>
-
-    <div id="cityModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('cityModal')">&times;</span>
-            <h2>For City Governments</h2>
-            <form onsubmit="submitCityForm(event)">
-                <input type="text" placeholder="City Name" required>
+            <span class="close" onclick="closeModal('rta-modal')">&times;</span>
+            <h2 style="color: #1a3a52; margin-bottom: 20px;">RTA Partnership Inquiry</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <input type="text" placeholder="RTA Name" required>
                 <input type="email" placeholder="Contact Email" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <textarea placeholder="Tell us about your noise pollution challenges" rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">Request Demo</button>
+                <input type="text" placeholder="Department">
+                <textarea placeholder="Partnership Interests" required></textarea>
+                <button type="submit" class="cta-button" style="width: 100%; text-align: center;">Request Demo</button>
             </form>
-            <p id="cityMessage" class="form-message"></p>
         </div>
     </div>
 
-    <div id="fleetModal" class="modal">
+    <div id="fleet-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('fleetModal')">&times;</span>
-            <h2>For Fleet Operators</h2>
-            <form onsubmit="submitFleetForm(event)">
+            <span class="close" onclick="closeModal('fleet-modal')">&times;</span>
+            <h2 style="color: #1a3a52; margin-bottom: 20px;">Fleet Operator Inquiry</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
                 <input type="text" placeholder="Company Name" required>
                 <input type="email" placeholder="Contact Email" required>
                 <input type="number" placeholder="Fleet Size" required>
-                <textarea placeholder="Tell us about your fleet operations" rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">Request Quote</button>
+                <textarea placeholder="Fleet Management Needs" required></textarea>
+                <button type="submit" class="cta-button" style="width: 100%; text-align: center;">Get Quote</button>
             </form>
-            <p id="fleetMessage" class="form-message"></p>
         </div>
     </div>
 
-    <div id="driverModal" class="modal">
+    <div id="driver-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('driverModal')">&times;</span>
-            <h2>For Individual Drivers</h2>
-            <form onsubmit="submitDriverForm(event)">
+            <span class="close" onclick="closeModal('driver-modal')">&times;</span>
+            <h2 style="color: #1a3a52; margin-bottom: 20px;">Driver Interest Form</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
                 <input type="text" placeholder="Your Name" required>
                 <input type="email" placeholder="Your Email" required>
-                <input type="text" placeholder="Vehicle Model" required>
-                <textarea placeholder="Why are you interested in SC-Horn?" rows="5" required></textarea>
-                <button type="submit" class="btn btn-primary">Express Interest</button>
+                <input type="text" placeholder="Vehicle Type">
+                <textarea placeholder="How can BEARZ help you?" required></textarea>
+                <button type="submit" class="cta-button" style="width: 100%; text-align: center;">Express Interest</button>
             </form>
-            <p id="driverMessage" class="form-message"></p>
         </div>
     </div>
 
-    <script src="/js/main.js"></script>
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your interest in BEARZ! We will contact you soon.');
+            event.target.reset();
+            const modalId = event.target.closest('.modal').id;
+            closeModal(modalId);
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
