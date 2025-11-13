@@ -11,48 +11,140 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Open Sans', sans-serif; background: #FFFFFF; color: #333; width: 100%; overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
-        .navbar { background: #1a3a52; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex-wrap: wrap; }
-        .navbar-brand { font-size: 24px; font-weight: 800; color: #D4AF37; text-decoration: none; }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .navbar { background: #1a3a52; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.1); flex-wrap: wrap; transition: all 0.3s ease; }
+        .navbar:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+        .navbar-brand { font-size: 24px; font-weight: 800; color: #D4AF37; text-decoration: none; animation: slideInLeft 0.6s ease; }
         .nav-links { display: flex; gap: 20px; list-style: none; flex-wrap: wrap; }
-        .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: color 0.3s; white-space: nowrap; }
-        .nav-links a:hover { color: #D4AF37; }
-        .hero { background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 60px 40px; text-align: center; min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; color: #D4AF37; line-height: 1.2; }
-        .hero p { font-size: 16px; margin-bottom: 30px; max-width: 800px; line-height: 1.6; }
-        .cta-button { background: #D4AF37; color: #1a3a52; padding: 12px 30px; border: none; border-radius: 5px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.3s; text-decoration: none; display: inline-block; margin: 8px; white-space: nowrap; }
-        .cta-button:hover { background: #E8C547; }
-        .section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; width: 100%; }
-        .section-title { font-size: 36px; color: #1a3a52; margin-bottom: 40px; text-align: center; border-bottom: 4px solid #D4AF37; padding-bottom: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; white-space: nowrap; position: relative; }
+        .nav-links a:hover { color: #D4AF37; transform: translateY(-2px); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #D4AF37; transition: width 0.3s ease; }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .hero { background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 60px 40px; text-align: center; min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%); pointer-events: none; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; color: #D4AF37; line-height: 1.2; animation: fadeInUp 0.8s ease; position: relative; z-index: 1; }
+        .hero p { font-size: 16px; margin-bottom: 30px; max-width: 800px; line-height: 1.6; animation: fadeInUp 0.8s ease 0.2s both; position: relative; z-index: 1; }
+        
+        .cta-button { background: #D4AF37; color: #1a3a52; padding: 12px 30px; border: none; border-radius: 5px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; margin: 8px; white-space: nowrap; position: relative; overflow: hidden; animation: fadeInUp 0.8s ease 0.4s both; }
+        .cta-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: #E8C547; transition: left 0.3s ease; z-index: -1; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(212, 175, 55, 0.4); }
+        .cta-button:hover::before { left: 0; }
+        
+        .section { padding: 60px 40px; max-width: 1200px; margin: 0 auto; width: 100%; opacity: 0; animation: fadeInUp 0.8s ease forwards; }
+        .section:nth-of-type(2) { animation-delay: 0.2s; }
+        .section:nth-of-type(3) { animation-delay: 0.4s; }
+        .section:nth-of-type(4) { animation-delay: 0.6s; }
+        
+        .section-title { font-size: 36px; color: #1a3a52; margin-bottom: 40px; text-align: center; border-bottom: 4px solid #D4AF37; padding-bottom: 20px; position: relative; animation: fadeInUp 0.8s ease; }
+        .section-title::after { content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%); width: 0; height: 4px; background: #D4AF37; animation: slideInRight 0.8s ease 0.3s forwards; }
+        
         .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+        .problem-grid > * { animation: slideInLeft 0.8s ease; }
+        .problem-grid > *:nth-child(2) { animation: slideInRight 0.8s ease; }
+        
         .problem-content h3 { font-size: 22px; color: #1a3a52; margin-bottom: 15px; }
         .problem-content p { font-size: 15px; line-height: 1.8; margin-bottom: 15px; color: #555; }
-        .stats-box { background: #f0f4f8; padding: 18px; border-left: 4px solid #D4AF37; margin: 12px 0; }
+        
+        .stats-box { background: #f0f4f8; padding: 18px; border-left: 4px solid #D4AF37; margin: 12px 0; transition: all 0.3s ease; cursor: pointer; animation: fadeInUp 0.6s ease; }
+        .stats-box:hover { transform: translateX(8px); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2); }
         .stats-box strong { color: #D4AF37; font-size: 16px; }
+        
         .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
-        .solution-features { display: flex; flex-direction: column; gap: 18px; }
-        .feature-item { background: #fff5e6; padding: 18px; border-left: 4px solid #D4AF37; }
+        .solution-grid > * { animation: slideInLeft 0.8s ease; }
+        .solution-grid > *:nth-child(2) { animation: slideInRight 0.8s ease; }
+        
+        .feature-item { background: #fff5e6; padding: 18px; border-left: 4px solid #D4AF37; transition: all 0.3s ease; animation: fadeInUp 0.6s ease; }
+        .feature-item:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(212, 175, 55, 0.2); border-left-width: 6px; }
         .feature-item h4 { color: #1a3a52; margin-bottom: 8px; font-size: 15px; }
         .feature-item p { color: #555; font-size: 13px; line-height: 1.6; }
+        
         .business-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; margin-bottom: 40px; }
-        .business-card { background: #f0f4f8; padding: 25px; border-left: 4px solid #D4AF37; text-align: center; }
-        .business-card h3 { color: #1a3a52; margin-bottom: 12px; font-size: 16px; }
-        .business-card p { color: #555; font-size: 13px; line-height: 1.6; }
-        .revenue-model { background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 30px; border-left: 4px solid #D4AF37; margin-top: 30px; }
+        .business-card { background: #f0f4f8; padding: 25px; border-left: 4px solid #D4AF37; text-align: center; transition: all 0.3s ease; animation: fadeInUp 0.6s ease; position: relative; overflow: hidden; }
+        .business-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%); opacity: 0; transition: opacity 0.3s ease; }
+        .business-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(212, 175, 55, 0.15); }
+        .business-card:hover::before { opacity: 1; }
+        .business-card h3 { color: #1a3a52; margin-bottom: 12px; font-size: 16px; position: relative; z-index: 1; }
+        .business-card p { color: #555; font-size: 13px; line-height: 1.6; position: relative; z-index: 1; }
+        .business-card:nth-child(1) { animation-delay: 0.1s; }
+        .business-card:nth-child(2) { animation-delay: 0.2s; }
+        .business-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        .revenue-model { background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 30px; border-left: 4px solid #D4AF37; margin-top: 30px; transition: all 0.3s ease; animation: fadeInUp 0.8s ease; }
+        .revenue-model:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(212, 175, 55, 0.2); }
         .revenue-model h4 { color: #D4AF37; margin-bottom: 12px; font-size: 16px; }
         .revenue-model p { font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+        
         .contact-section { background: #fff5e6; padding: 40px; text-align: center; border-left: 4px solid #D4AF37; }
         .contact-section h2 { color: #1a3a52; margin-bottom: 20px; }
+        
         .contact-form { max-width: 600px; margin: 30px auto; display: flex; flex-direction: column; gap: 12px; }
-        .contact-form input, .contact-form textarea { padding: 10px; border: 2px solid #D4AF37; border-radius: 5px; font-family: 'Open Sans', sans-serif; font-size: 13px; width: 100%; }
+        .contact-form input, .contact-form textarea { padding: 10px; border: 2px solid #D4AF37; border-radius: 5px; font-family: 'Open Sans', sans-serif; font-size: 13px; width: 100%; transition: all 0.3s ease; }
+        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #1a3a52; box-shadow: 0 0 10px rgba(26, 58, 82, 0.3); transform: scale(1.02); }
         .contact-form textarea { resize: vertical; min-height: 100px; }
-        .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: #1a3a52; box-shadow: 0 0 5px rgba(26, 58, 82, 0.3); }
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow-y: auto; }
-        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 600px; border-left: 4px solid #D4AF37; }
-        .close { color: #aaa; float: right; font-size: 24px; font-weight: bold; cursor: pointer; }
-        .close:hover { color: #D4AF37; }
+        
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); overflow-y: auto; animation: fadeInUp 0.3s ease; }
+        .modal.show { animation: fadeInUp 0.3s ease; }
+        .modal-content { background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 600px; border-left: 4px solid #D4AF37; animation: slideInUp 0.3s ease; }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close { color: #aaa; float: right; font-size: 24px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; }
+        .close:hover { color: #D4AF37; transform: rotate(90deg); }
+        
         .footer { background: #1a3a52; color: white; padding: 30px 40px; text-align: center; width: 100%; }
-        .footer p { margin: 8px 0; font-size: 13px; }
+        .footer p { margin: 8px 0; font-size: 13px; animation: fadeInUp 0.8s ease; }
+        
         .logo-img { height: 40px; margin-right: 20px; }
+        
+        /* Interactive Elements */
+        .interactive-tool { background: #f9f9f9; padding: 25px; border-radius: 8px; margin: 20px 0; animation: fadeInUp 0.6s ease; transition: all 0.3s ease; }
+        .interactive-tool:hover { box-shadow: 0 8px 16px rgba(212, 175, 55, 0.15); }
+        .interactive-tool h3 { color: #1a3a52; margin-bottom: 15px; font-size: 18px; }
+        
+        .progress-bar { width: 100%; height: 8px; background: #e0e0e0; border-radius: 4px; margin: 15px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #D4AF37, #E8C547); width: 0%; animation: slideInLeft 0.8s ease forwards; border-radius: 4px; }
+        
+        .counter { font-size: 32px; font-weight: 800; color: #D4AF37; animation: countUp 0.8s ease; }
+        
+        .button-group { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .button-group button { animation: fadeInUp 0.6s ease; }
+        
+        /* Scroll Animation */
+        .scroll-animate { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .scroll-animate.visible { opacity: 1; transform: translateY(0); }
+        
         @media (max-width: 1024px) {
             .section { padding: 50px 30px; }
             .navbar { padding: 15px 30px; }
@@ -111,11 +203,12 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div style="display: flex; align-items: center;">
-            <span class="navbar-brand">BEARZ</span>
+            <span class="navbar-brand">🐻 BEARZ</span>
         </div>
         <ul class="nav-links">
             <li><a onclick="scrollToSection('problem')">Problem</a></li>
             <li><a onclick="scrollToSection('solution')">Solution</a></li>
+            <li><a onclick="scrollToSection('interactive')">Interactive</a></li>
             <li><a onclick="scrollToSection('business')">Business</a></li>
             <li><a onclick="scrollToSection('contact')">Contact</a></li>
         </ul>
@@ -123,10 +216,12 @@
 
     <!-- Hero Section -->
     <div class="hero">
-        <h1>BEARZ: Silencing Unnecessary Honking</h1>
+        <h1>🔇 BEARZ: Silencing Unnecessary Honking</h1>
         <p>A data-driven solution to urban noise pollution through honking tracking, accountability, and behavioral transformation.</p>
-        <button class="cta-button" onclick="openModal('contact-modal')">Get in Touch</button>
-        <button class="cta-button" onclick="scrollToSection('solution')" style="background: white; color: #1a3a52;">Learn More</button>
+        <div class="button-group">
+            <button class="cta-button" onclick="openModal('contact-modal')">Get in Touch</button>
+            <button class="cta-button" onclick="scrollToSection('solution')" style="background: white; color: #1a3a52;">Learn More</button>
+        </div>
     </div>
 
     <!-- Problem Section -->
@@ -137,29 +232,29 @@
                 <h3>Why Honking is a Problem</h3>
                 <p>Urban honking has become a major source of noise pollution, affecting millions of people's health and quality of life.</p>
                 
-                <div class="stats-box">
+                <div class="stats-box scroll-animate">
                     <strong>65%</strong> of drivers honk inappropriately in non-emergency situations
                 </div>
                 
-                <div class="stats-box">
+                <div class="stats-box scroll-animate">
                     <strong>90-110 dB</strong> - Car horns exceed safe noise limits (safe limit: 70 dB)
                 </div>
                 
-                <div class="stats-box">
+                <div class="stats-box scroll-animate">
                     <strong>418 times/year</strong> - Average honking frequency per driver
                 </div>
                 
-                <div class="stats-box">
+                <div class="stats-box scroll-animate">
                     <strong>4.56 million</strong> vehicles registered in the UAE
                 </div>
             </div>
             <div>
                 <h3 style="color: #D4AF37; margin-bottom: 20px;">Health & Environmental Impact</h3>
-                <p style="margin-bottom: 15px;"><strong>Sleep Disruption:</strong> Noise pollution reduces sleep quality and increases fatigue-related accidents.</p>
-                <p style="margin-bottom: 15px;"><strong>Stress & Anxiety:</strong> Chronic exposure to honking increases cortisol levels and stress-related illnesses.</p>
-                <p style="margin-bottom: 15px;"><strong>Cardiovascular Issues:</strong> Prolonged noise exposure contributes to hypertension and heart disease.</p>
-                <p style="margin-bottom: 15px;"><strong>Behavioral Problems:</strong> Children exposed to noise pollution show reduced concentration and learning ability.</p>
-                <p><strong>Environmental Degradation:</strong> Noise pollution disrupts wildlife and ecosystems in urban areas.</p>
+                <p style="margin-bottom: 15px;"><strong>😴 Sleep Disruption:</strong> Noise pollution reduces sleep quality and increases fatigue-related accidents.</p>
+                <p style="margin-bottom: 15px;"><strong>😰 Stress & Anxiety:</strong> Chronic exposure to honking increases cortisol levels and stress-related illnesses.</p>
+                <p style="margin-bottom: 15px;"><strong>❤️ Cardiovascular Issues:</strong> Prolonged noise exposure contributes to hypertension and heart disease.</p>
+                <p style="margin-bottom: 15px;"><strong>👶 Behavioral Problems:</strong> Children exposed to noise pollution show reduced concentration and learning ability.</p>
+                <p><strong>🌍 Environmental Degradation:</strong> Noise pollution disrupts wildlife and ecosystems in urban areas.</p>
             </div>
         </div>
     </section>
@@ -172,51 +267,133 @@
                 <h3 style="color: #1a3a52; margin-bottom: 20px;">How BEARZ Works</h3>
                 <p style="margin-bottom: 20px; color: #555; line-height: 1.8;">BEARZ is a compact honking tracking device installed in vehicles during annual RTA registration. It uses advanced frequency sensors to detect and log honking incidents, creating accountability through a tariff system.</p>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>🔊 Frequency Detection</h4>
                     <p>Accurately captures car horn frequencies (300-600 Hz) to track only the vehicle's own honks, not ambient noise.</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>📊 Data Logging</h4>
                     <p>Records honking incidents with timestamps and duration for accurate accountability and tariff calculation.</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>💰 Tariff System</h4>
                     <p>Drivers pay annual tariffs based on honking frequency, creating a financial incentive to reduce unnecessary honking.</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>🌍 RTA Integration</h4>
                     <p>Seamlessly integrates with existing vehicle registration systems across all 7 UAE emirates.</p>
                 </div>
             </div>
             <div>
                 <h3 style="color: #1a3a52; margin-bottom: 20px;">Product Specifications</h3>
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>Device Cost</h4>
                     <p><strong style="color: #D4AF37;">5 AED</strong> per unit - affordable for mass deployment</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>Installation</h4>
                     <p>Simple plug-and-play installation during routine vehicle registration. No complex wiring required.</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>Technology</h4>
                     <p>Advanced frequency sensor technology with secure encrypted data transmission to RTA systems.</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>Expected Impact</h4>
                     <p><strong>45-60% reduction</strong> in unnecessary honking within 3 years of deployment</p>
                 </div>
                 
-                <div class="feature-item">
+                <div class="feature-item scroll-animate">
                     <h4>Market Potential</h4>
                     <p><strong>25 million AED</strong> one-time revenue from 4.56M vehicles + recurring tariff revenue</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Section -->
+    <section class="section" id="interactive">
+        <h2 class="section-title">Interactive Tools</h2>
+        
+        <div class="interactive-tool">
+            <h3>📊 Honking Impact Calculator</h3>
+            <p style="margin-bottom: 15px; color: #555;">Calculate the annual impact of honking in your city and see how BEARZ reduces it.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <div>
+                    <label style="display: block; margin-bottom: 5px; color: #1a3a52; font-weight: 600;">Daily Honks per Driver:</label>
+                    <input type="number" id="dailyHonks" value="1" min="0" max="50" style="width: 100%; padding: 8px; border: 2px solid #D4AF37; border-radius: 4px;">
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 5px; color: #1a3a52; font-weight: 600;">City Population:</label>
+                    <input type="number" id="cityPopulation" value="1000000" min="10000" max="10000000" style="width: 100%; padding: 8px; border: 2px solid #D4AF37; border-radius: 4px;">
+                </div>
+            </div>
+            <button class="cta-button" onclick="calculateImpact()">Calculate Impact</button>
+            <div id="impactResult" style="margin-top: 20px; display: none;">
+                <div style="background: #fff5e6; padding: 20px; border-left: 4px solid #D4AF37; border-radius: 4px;">
+                    <p style="margin: 10px 0;"><strong>Annual Honking Events:</strong> <span class="counter" id="annualHonks">0</span></p>
+                    <p style="margin: 10px 0;"><strong>Noise Reduction with BEARZ:</strong> <span class="counter" id="noiseReduction">0</span>%</p>
+                    <p style="margin: 10px 0;"><strong>Health Impact Improvement:</strong> <span id="healthImpact">Significant</span></p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-tool">
+            <h3>⚖️ BEARZ vs Standard Horn Comparison</h3>
+            <p style="margin-bottom: 15px; color: #555;">See how BEARZ outperforms traditional honking systems.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                <div style="text-align: center; padding: 15px; background: white; border-radius: 4px; border: 2px solid #ddd;">
+                    <strong style="color: #1a3a52;">Feature</strong>
+                </div>
+                <div style="text-align: center; padding: 15px; background: white; border-radius: 4px; border: 2px solid #ddd;">
+                    <strong style="color: #1a3a52;">Standard Horn</strong>
+                </div>
+                <div style="text-align: center; padding: 15px; background: #fff5e6; border-radius: 4px; border: 2px solid #D4AF37;">
+                    <strong style="color: #D4AF37;">BEARZ</strong>
+                </div>
+                
+                <div style="padding: 12px; background: white; border-radius: 4px;">Polite Communication</div>
+                <div style="padding: 12px; background: white; border-radius: 4px; text-align: center;">❌</div>
+                <div style="padding: 12px; background: #fff5e6; border-radius: 4px; text-align: center;">✅</div>
+                
+                <div style="padding: 12px; background: white; border-radius: 4px;">Data Logging</div>
+                <div style="padding: 12px; background: white; border-radius: 4px; text-align: center;">❌</div>
+                <div style="padding: 12px; background: #fff5e6; border-radius: 4px; text-align: center;">✅</div>
+                
+                <div style="padding: 12px; background: white; border-radius: 4px;">Accountability</div>
+                <div style="padding: 12px; background: white; border-radius: 4px; text-align: center;">❌</div>
+                <div style="padding: 12px; background: #fff5e6; border-radius: 4px; text-align: center;">✅</div>
+                
+                <div style="padding: 12px; background: white; border-radius: 4px;">Noise Reduction</div>
+                <div style="padding: 12px; background: white; border-radius: 4px; text-align: center;">0%</div>
+                <div style="padding: 12px; background: #fff5e6; border-radius: 4px; text-align: center;"><strong style="color: #D4AF37;">45-60%</strong></div>
+            </div>
+        </div>
+
+        <div class="interactive-tool">
+            <h3>🎯 Revenue Projection Tool</h3>
+            <p style="margin-bottom: 15px; color: #555;">Explore BEARZ's financial potential across different market penetration scenarios.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
+                <button class="cta-button" onclick="showRevenue(25)" style="margin: 0;">Year 1 (25%)</button>
+                <button class="cta-button" onclick="showRevenue(50)" style="margin: 0;">Year 3 (50%)</button>
+                <button class="cta-button" onclick="showRevenue(88)" style="margin: 0;">Year 5 (88%)</button>
+            </div>
+            <div id="revenueResult" style="margin-top: 20px; display: none;">
+                <div style="background: linear-gradient(135deg, #1a3a52 0%, #2C5F8D 100%); color: white; padding: 20px; border-left: 4px solid #D4AF37; border-radius: 4px;">
+                    <p style="margin: 10px 0;"><strong>Market Penetration:</strong> <span id="penetration">0</span>%</p>
+                    <p style="margin: 10px 0;"><strong>Vehicles Equipped:</strong> <span id="vehiclesEquipped">0</span></p>
+                    <p style="margin: 10px 0;"><strong>One-Time Revenue:</strong> <span id="oneTimeRevenue">0</span> AED</p>
+                    <p style="margin: 10px 0;"><strong>Annual Tariff Revenue:</strong> <span id="annualRevenue">0</span> AED</p>
+                    <p style="margin: 10px 0; font-size: 18px;"><strong>Total Revenue:</strong> <span id="totalRevenue" style="color: #D4AF37;">0</span> AED</p>
                 </div>
             </div>
         </div>
@@ -267,7 +444,7 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p><strong>BEARZ - Behavioral Accountability for Emission Reduction & Zero-noise</strong></p>
+        <p><strong>🐻 BEARZ - Behavioral Accountability for Emission Reduction & Zero-noise</strong></p>
         <p>Transforming traffic culture through accountability and acoustic civility.</p>
         <p style="margin-top: 20px; color: #D4AF37;">© 2025 BEARZ. All rights reserved.</p>
     </footer>
@@ -330,6 +507,24 @@
     </div>
 
     <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
@@ -338,11 +533,15 @@
         }
 
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = "block";
+            const modal = document.getElementById(modalId);
+            modal.style.display = "block";
+            modal.classList.add('show');
         }
 
         function closeModal(modalId) {
-            document.getElementById(modalId).style.display = "none";
+            const modal = document.getElementById(modalId);
+            modal.style.display = "none";
+            modal.classList.remove('show');
         }
 
         function handleSubmit(event) {
@@ -357,6 +556,38 @@
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = "none";
             }
+        }
+
+        // Interactive Tools
+        function calculateImpact() {
+            const dailyHonks = parseInt(document.getElementById('dailyHonks').value) || 1;
+            const cityPop = parseInt(document.getElementById('cityPopulation').value) || 1000000;
+            const driverRatio = 0.4; // 40% of population are drivers
+            const drivers = Math.floor(cityPop * driverRatio);
+            const annualHonks = dailyHonks * 365 * drivers;
+            const noiseReduction = 52; // Average 45-60%
+            
+            document.getElementById('annualHonks').textContent = (annualHonks / 1000000).toFixed(1) + 'M';
+            document.getElementById('noiseReduction').textContent = noiseReduction;
+            document.getElementById('healthImpact').textContent = noiseReduction > 50 ? 'Significant' : 'Moderate';
+            document.getElementById('progressBar').style.width = noiseReduction + '%';
+            document.getElementById('impactResult').style.display = 'block';
+        }
+
+        function showRevenue(penetration) {
+            const totalVehicles = 4560000;
+            const vehiclesEquipped = Math.floor(totalVehicles * (penetration / 100));
+            const deviceCost = 5;
+            const oneTimeRevenue = vehiclesEquipped * deviceCost;
+            const annualTariff = vehiclesEquipped * 10; // Average 10 AED per vehicle per year
+            const totalRevenue = oneTimeRevenue + annualTariff;
+            
+            document.getElementById('penetration').textContent = penetration;
+            document.getElementById('vehiclesEquipped').textContent = (vehiclesEquipped / 1000000).toFixed(2) + 'M';
+            document.getElementById('oneTimeRevenue').textContent = (oneTimeRevenue / 1000000).toFixed(1) + 'M';
+            document.getElementById('annualRevenue').textContent = (annualTariff / 1000000).toFixed(1) + 'M';
+            document.getElementById('totalRevenue').textContent = (totalRevenue / 1000000).toFixed(1) + 'M';
+            document.getElementById('revenueResult').style.display = 'block';
         }
     </script>
 </body>
