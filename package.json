@@ -1,0 +1,15 @@
+{
+  "name": "bearz-website",
+  "version": "1.0.0",
+  "description": "BEARZ - Honking Tracking & Accountability System",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["bearz", "honking", "noise-pollution"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
